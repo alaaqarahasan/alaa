@@ -195,20 +195,10 @@ class CreateScreen extends StatelessWidget {
       style: TextStyle(fontSize: 11, color: Colors.black),
     ),
     
+   
     InkWell(
       borderRadius: BorderRadius.circular(4),
-      onTap: () async {
-        final result = await Get.find<AuthRepository>().getContentLinks();
-        result.fold(
-          (errors) => Get.snackbar('تنبيه', 'فشل جلب الرابط حالياً'),
-          (linksModel) async {
-            final url = Uri.parse(linksModel.termsUrl ?? '');
-            if (await canLaunchUrl(url)) {
-               await launchUrl(url, mode: LaunchMode.inAppWebView);
-            }
-          },
-        );
-      },
+      onTap: () => controller.openContentLink(isTerms: true), 
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 2, vertical: 4), 
         child: Text(
@@ -222,22 +212,13 @@ class CreateScreen extends StatelessWidget {
         ),
       ),
     ),
+    
     const Text(' و ', style: TextStyle(fontSize: 11, color: Colors.black)),
    
+    
     InkWell(
       borderRadius: BorderRadius.circular(4),
-      onTap: () async {
-        final result = await Get.find<AuthRepository>().getContentLinks();
-        result.fold(
-          (errors) => Get.snackbar('تنبيه', 'فشل جلب الرابط حالياً'),
-          (linksModel) async {
-            final url = Uri.parse(linksModel.privacyUrl ?? '');
-            if (await canLaunchUrl(url)) {
-               await launchUrl(url, mode: LaunchMode.inAppWebView);
-            }
-          },
-        );
-      },
+      onTap: () => controller.openContentLink(isTerms: false), 
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
         child: Text(
@@ -253,6 +234,7 @@ class CreateScreen extends StatelessWidget {
     ),
   ],
 )
+
 
 ],
 ),

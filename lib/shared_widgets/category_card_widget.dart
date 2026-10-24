@@ -33,14 +33,15 @@ class CategoryCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
-            // 1. الصورة الخلفية للأقسام
+
+            //!  الصورة الخلفية للأقسام
             Positioned.fill(
               child: Image.asset(
                 this.bgImageUrl,
                 fit: BoxFit.cover,
               ),
             ),
-            // 2. التراكب الانسيابي الكامل المتدرج (Gradient) لمنع ظهور حواف المستطيل الحاد القديم
+           
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -48,15 +49,14 @@ class CategoryCardWidget extends StatelessWidget {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                      const Color(0xff1C2A5A).withOpacity(0.90), // اللون الكحلي الرسمي لمشروعكم من الأسفل
-                      const Color(0xff1C2A5A).withOpacity(0.40), // يتلاشى تدريجياً نحو الأعلى ليظهر الصورة بوضوح
+                      const Color(0xff1C2A5A),
                       Colors.transparent,
                     ],
                   ),
                 ),
               ),
             ),
-            // 3. النصوص متموضعة بذكاء في الزاوية السفلية اليمنى للكرت
+            //! النصوص  في الاسفل للكرت
             Positioned(
               bottom: 12,
               right: 14,

@@ -1,6 +1,6 @@
-import 'package:ads_app/ui/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
-import '../../shared_widgets/app_bottom_navigation.dart';
+import 'package:ads_app/ui/screens/home_screen/home_screen.dart';
+import 'package:ads_app/shared_widgets/app_bottom_navigation.dart'; 
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
@@ -13,8 +13,10 @@ class BottomNavigationScreen extends StatefulWidget {
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   BottomNavItem currentTab = BottomNavItem.home;
 
+
   final Map<BottomNavItem, Widget> screens = {
-    BottomNavItem.home: const HomeScreen(), // ← صارت الصفحة الحقيقية بدل الـ placeholder
+    BottomNavItem.home: const HomeScreen(),
+
     BottomNavItem.messages: const Center(
       child: Text("الرسائل", style: TextStyle(fontSize: 30)),
     ),
@@ -45,6 +47,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           children:
               BottomNavItem.values.map((item) => screens[item]!).toList(),
         ),
+       
         bottomNavigationBar: AppBottomNavigation(
           currentTab: currentTab,
           onTap: _onNavItemTap,

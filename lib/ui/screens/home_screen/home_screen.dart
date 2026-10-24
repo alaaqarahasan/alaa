@@ -86,11 +86,10 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // 🚗 🏢 📱 💼 شبكة الأقسام المتناظرة والمطابقة للفيجما بالارتفاع الموحد والـ Stack الانسيابي
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // العمود الأيمن: سيارات وعقارات
+                   
                     Expanded(
                       flex: 1,
                       child: Column(
@@ -99,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                             title: 'سيارات',
                             count: controller.isLoading.value ? 'جاري التحميل...' : '${controller.homeStats.value.carsCount ?? 0} إعلان',
                             bgImageUrl: 'assets/images/cars.png', 
-                            height: 125, // ارتفاع موحد ومتناسق يمنع تمدد الصورة
+                            height: 125,
                           ),
                           const SizedBox(height: 16),
                           CategoryCardWidget(
@@ -112,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    // العمود الأيسر: إلكترونيات ووظائف
+                    
                     Expanded(
                       flex: 1,
                       child: Column(
@@ -121,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                             title: 'إلكترونيات',
                             count: '4,152 إعلان', 
                             bgImageUrl: 'assets/images/electronics.png', 
-                            height: 125, // متناسق ومطابق تماماً
+                            height: 125, 
                           ),
                           const SizedBox(height: 16),
                           const CategoryCardWidget(
@@ -137,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 28),
 
-                // 🌟 قسم أفضل الصفقات القريبة منك
+                //! قسم أفضل الصفقات القريبة منك
                 const Text('أفضل الصفقات القريبة منك', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
                 const SizedBox(height: 12),
                 SizedBox(
@@ -165,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
-                // ⏱️ قسم وصل حديثاً
+                //! قسم وصل حديثاً
                 const Text('وصل حديثاً', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
                 const SizedBox(height: 12),
                 SizedBox(

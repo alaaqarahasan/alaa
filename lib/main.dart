@@ -1,4 +1,5 @@
 import 'package:ads_app/core/enums/bottom_nav.dart';
+import 'package:ads_app/ui/screens/bottom_navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bot_toast/bot_toast.dart';

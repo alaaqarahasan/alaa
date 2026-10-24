@@ -9,7 +9,7 @@ class AdItemModel {
   String? categoryName;
   int? viewsCount;
   bool? isSaved;
-  DateTime? createdAt;
+ DateTime ? createdAt ;
 
   AdItemModel({
     this.id,
@@ -19,7 +19,7 @@ class AdItemModel {
     this.status,
     this.thumbnailUrl,
     this.governorateName,
-    this.categoryName,
+    this.categoryName, 
     this.viewsCount,
     this.isSaved,
     this.createdAt,

@@ -1,6 +1,7 @@
 import 'package:ads_app/core/data/repository/auth_repository.dart';
 import 'package:ads_app/core/enums/bottom_nav.dart';
 import 'package:ads_app/core/services/local_storage_service.dart';
+import 'package:ads_app/ui/screens/bottom_navigation_screen.dart';
 import 'package:ads_app/ui/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

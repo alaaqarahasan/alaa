@@ -1,8 +1,10 @@
 import 'package:ads_app/core/data/repository/auth_repository.dart';
 import 'package:ads_app/core/services/local_storage_service.dart';
+import 'package:ads_app/ui/screens/bottom_navigation_screen.dart';
 import 'package:ads_app/ui/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart'; 
 
 class CreateController extends GetxController {
   late GlobalKey<FormState> formKey;
@@ -14,7 +16,6 @@ class CreateController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool showPassword = false.obs;
   RxBool showConfirmPassword = false.obs;
-
 
   @override
   void onInit() {
@@ -28,6 +29,45 @@ class CreateController extends GetxController {
     emailReq = RegExp(
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
     );
+  }
+
+  Future<void> openContentLink({required bool isTerms}) async {
+    try {
+      final result = await _authRepository.getContentLinks();
+      result.fold(
+        (errors) {
+          Get.snackbar(
+            'تنبيه', 
+            errors.isNotEmpty ? (errors.first.message ?? 'فشلت عملية جلب الرابط') : 'فشل جلب الرابط حالياً',
+            backgroundColor: Colors.orange,
+            colorText: Colors.white,
+          );
+        },
+        (linksModel) async {
+          final String targetUrlString = isTerms 
+              ? (linksModel.termsUrl ?? '') 
+              : (linksModel.privacyUrl ?? '');
+
+          if (targetUrlString.isNotEmpty) {
+            final url = Uri.parse(targetUrlString);
+        
+            await launchUrl(
+              url, 
+              mode: LaunchMode.inAppWebView,
+            );
+          } else {
+            Get.snackbar(
+              'تنبيه', 
+              'الرابط المرجوع من السيرفر فارغ حالياً',
+              backgroundColor: Colors.orange,
+              colorText: Colors.white,
+            );
+          }
+        },
+      );
+    } catch (e) {
+      print("حدث خطأ أثناء فتح الرابط: ${e.toString()}");
+    }
   }
 
   Future<void> registerUser({
@@ -68,7 +108,7 @@ class CreateController extends GetxController {
           colorText: Colors.white,
           snackPosition: SnackPosition.BOTTOM,
         );
-        Get.offAll(() => const HomeScreen());
+        Get.offAll(() => const BottomNavigationScreen());
       },
     );
   }

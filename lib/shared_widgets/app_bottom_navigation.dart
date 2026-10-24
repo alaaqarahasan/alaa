@@ -68,7 +68,7 @@ class AppBottomNavigation extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentTab.index,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xff1E2A5A),
+      selectedItemColor: const Color(0xff1E2A5A), 
       unselectedItemColor: Colors.grey,
       onTap: (index) {
         onTap(index);
@@ -77,7 +77,7 @@ class AppBottomNavigation extends StatelessWidget {
         return BottomNavigationBarItem(
           icon: Icon(
             item == currentTab ? item.activeIcon : item.icon,
-            size: item == BottomNavItem.add ? 40 : 24,
+            size: item == BottomNavItem.add ? 40 : 24, 
           ),
           label: item.title,
         );
